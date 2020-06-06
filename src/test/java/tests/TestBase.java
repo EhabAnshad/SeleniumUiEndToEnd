@@ -28,7 +28,7 @@ public class TestBase
 
 	@BeforeSuite
 	@Parameters({"URL" })
-	public void initSuite(@Optional("http://127.0.0.1/") String URL) 
+	public void initSuite(@Optional("http://127.0.0.1:3000/") String URL) 
 	{
 		ApplicationConfigurations.baseURl = URL;
 	}
@@ -37,13 +37,11 @@ public class TestBase
 	@Parameters({ "browser" })
 	public void getDriverForTest(@Optional("chrome") String WindowBrowser)
 	{
-		if (WindowBrowser.equalsIgnoreCase("chrome")) {
+		if (WindowBrowser.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
 		}
 		else if (WindowBrowser.equalsIgnoreCase("chrome")) 
 		{
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + File.separator + "resources"
-					+ File.separator + "chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--test-type");
 			driver = new ChromeDriver(options);

@@ -56,7 +56,7 @@ public class PageBase {
 				   .equals("complete"));
 	}
 
-	public void waitForJQuery(WebDriver driver) 
+	public void waitForJQuery() 
 	{
 		new WebDriverWait(driver, 10)
 				.until((ExpectedCondition<Boolean>) 

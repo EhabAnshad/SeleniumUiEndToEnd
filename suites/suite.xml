@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="demo" parallel="classes" thread-count="1">
+	<parameter name="URL" value="http://127.0.0.1/" />
+	<test name="test_IE">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="testcases.RequiredTestingScenario" />
+		</classes>
+	</test>
+</suite>

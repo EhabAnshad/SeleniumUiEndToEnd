@@ -19,6 +19,8 @@ public class NavigationLinks extends PageBase {
 
 	public UsersPage openUsers() {
 		usersPage.click();
+		waitForPageToLoad();
+		waitForJQuery();
 		return new UsersPage(driver);
 	}
 	

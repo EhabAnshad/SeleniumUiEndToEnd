@@ -10,10 +10,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -33,7 +33,7 @@ public class TestBase
 		ApplicationConfigurations.baseURl = URL;
 	}
 
-	@BeforeTest
+	@BeforeClass
 	@Parameters({ "browser" })
 	public void getDriverForTest(@Optional("chrome") String WindowBrowser)
 	{
@@ -67,7 +67,7 @@ public class TestBase
 		}
 	}
 
-	@AfterTest(alwaysRun=true)
+	@AfterClass(alwaysRun=true)
 	public void stopDriver() {
 		driver.quit();
 	}

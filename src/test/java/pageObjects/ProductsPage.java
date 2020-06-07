@@ -54,9 +54,10 @@ public class ProductsPage extends NavigationLinks {
 		int tries = 4;
 		boolean match = true;
 		while (match && tries > 0) {
+			waitForElementToBeVisible(By.id("product"));
 			productName.clear();
 			productName.sendKeys(product.getProductName());
-			match = !productName.getText().equalsIgnoreCase(product.getProductName());
+			match = !productName.getAttribute("value").equalsIgnoreCase(product.getProductName());
 			tries--;
 		}
 		productPrice.clear();
@@ -88,9 +89,8 @@ public class ProductsPage extends NavigationLinks {
 	}
 		
 	public ProductsPage deleteProduct(Product testProduct) {
-		WebElement deleteProductButton = driver.findElement(By.cssSelector("a[name='" +testProduct.getProductName() + "_delete']"));
-		deleteProductButton.click();
-		fluentWait(By.id("delete"));
+		clickElement(By.name(testProduct.getProductName() + "_delete"));
+		waitForElementToBeVisible(By.id("delete"));	
 		deleteButton.click();
 		return this;
 	}
@@ -107,6 +107,11 @@ public class ProductsPage extends NavigationLinks {
 		}
 		
 		return successText.getText() ;
+	}
+	
+	public ProductsPage refreshProductlist(){
+		refreshPage();
+		return this;
 	}
 
 	

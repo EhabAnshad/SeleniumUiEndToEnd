@@ -10,9 +10,9 @@ import pageObjects.UsersPage;
 import tests.TestBase;
 
 public class EditUserTest extends TestBase {
-
+	
     @Test 
-    public void VerifyUserExists() {
+    public void EditUserTests() {
     	//setup
     	User testUser = new GenerateUser();
     	HomePage homePageObject = new HomePage(driver);
@@ -28,7 +28,7 @@ public class EditUserTest extends TestBase {
     	String updatedUserName = userPage.editUser(testUser, updateTestUser).getUserName(updateTestUser);
     	Assert.assertEquals(updatedUserName,  updateTestUser.getUsername());
     	
-    	//clean up
     	userPage.deleteUser(testUser);
     }
+
 }

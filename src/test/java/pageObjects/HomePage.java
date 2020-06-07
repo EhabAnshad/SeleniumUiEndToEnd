@@ -39,9 +39,11 @@ public class HomePage extends NavigationLinks {
 		userName.clear();
 		userName.sendKeys(user.getUsername());
 		int tries = 3;
-		while (!email.getText().equalsIgnoreCase(user.getEmail()) && tries > 0) {
+		boolean flag = true;
+		while (flag && tries > 0) {
 			email.clear();
 			email.sendKeys(user.getEmail());
+			flag = !email.getAttribute("value").equalsIgnoreCase(user.getEmail());
 			tries--;
 		}
 		signup.click();

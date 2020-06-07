@@ -12,7 +12,7 @@ import tests.TestBase;
 public class AddProductShownInProductPage extends TestBase {
 
     @Test 
-    public void VerifyUserExists() {
+    public void VerifyProductExists() {
     	//setup
     	Product testProduct = new GenerateProduct();
     	HomePage homePageObject = new HomePage(driver);
@@ -24,7 +24,7 @@ public class AddProductShownInProductPage extends TestBase {
     			.equalsIgnoreCase("Product added successfully, refresh the page to load new data."),
     			result);
     	
-    	productsPage.openProducts();
+    	productsPage.refreshProductlist();
     	Assert.assertTrue(productsPage.doesProductExists(testProduct), testProduct.getProductName() + " doesn't exists");
     	
     	//clean up 

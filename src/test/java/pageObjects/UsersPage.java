@@ -28,6 +28,7 @@ public class UsersPage extends NavigationLinks {
 			
 	public UsersPage(WebDriver driver) {
 		super(driver);
+		waitForPageToLoad();
 	}
 	
 	public boolean doesUserExists(User user) {
@@ -37,9 +38,8 @@ public class UsersPage extends NavigationLinks {
 	}
 
 	public UsersPage editUser(User oldUser, User updatedUser) {
-		WebElement editButton = driver.findElement(By.cssSelector("a[data-user_name='" + oldUser.getUsername() + "']"));
-		editButton.click();
-		waitForJQuery();
+		clickElement(By.cssSelector("a[data-user_name='" + oldUser.getUsername() + "']"));
+		waitForElementToBeVisible(By.id("user_name"));
 		userName.clear();
 		userName.sendKeys(updatedUser.getUsername());
 		updateButton.click();
@@ -52,10 +52,10 @@ public class UsersPage extends NavigationLinks {
 	}
 		
 	public UsersPage deleteUser(User testUser) {
-		WebElement deleteUserButton = driver.findElement(By.cssSelector("a[name='" +testUser.getEmail() + "_delete']"));
-		deleteUserButton.click();
-		fluentWait(By.id("delete"));
+		clickElement(By.cssSelector("a[name='" +testUser.getEmail() + "_delete']"));
+		waitForElementToBeVisible(By.id("delete"));
 		deleteButton.click();
+		waitForJQuery();
 		return this;
 	}
 	

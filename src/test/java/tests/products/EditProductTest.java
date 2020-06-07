@@ -12,7 +12,7 @@ import tests.TestBase;
 public class EditProductTest extends TestBase {
 
     @Test 
-    public void VerifyProductExists() {
+    public void EditProductTests() {
     	//setup
     	Product testProduct = new GenerateProduct();
     	HomePage homePageObject = new HomePage(driver);

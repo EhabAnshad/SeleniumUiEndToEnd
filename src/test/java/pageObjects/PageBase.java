@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,8 +26,6 @@ import configurations.ApplicationConfigurations;
  */
 
 public class PageBase {
-
-
 	protected WebDriver driver;
 
 	public PageBase(WebDriver driver)
@@ -47,6 +46,13 @@ public class PageBase {
 				return driver.findElement(selector);
 			}
 		});
+	}
+	
+	public void waitForElementToBeVisible(final By selector)
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(
+		        ExpectedConditions.visibilityOfElementLocated(selector));
 	}
 	
 	public void waitForPageToLoad()
@@ -71,10 +77,14 @@ public class PageBase {
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", element);
 	}
+	
+	
 	public String getCurrentPageTitle()
 	{
 		return driver.getCurrentUrl();
 	}
 
-
+	public void refreshPage() {
+		driver.navigate().refresh();
+	}
 }

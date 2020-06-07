@@ -12,7 +12,7 @@ import tests.TestBase;
 public class AddExistingProduct extends TestBase {
 
     @Test 
-    public void AddExistingUserTest() {
+    public void AddExistingProductTest() {
     	//setup
     	Product testProduct = new GenerateProduct();
     	HomePage homePageObject = new HomePage(driver);
@@ -25,6 +25,7 @@ public class AddExistingProduct extends TestBase {
     			result);
     	
     	//clean up 
+    	productsPage.refreshProductlist();
     	productsPage.deleteProduct(testProduct);
     }
 }

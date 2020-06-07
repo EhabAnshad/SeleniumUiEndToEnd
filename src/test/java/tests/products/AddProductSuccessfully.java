@@ -25,6 +25,7 @@ public class AddProductSuccessfully extends TestBase {
     			result);
     	
     	//clean up 
+    	productsPage.refreshPage();
     	productsPage.deleteProduct(testProduct);
     }
 }

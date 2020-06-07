@@ -2,6 +2,8 @@ package pageObjects;
 
 
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -12,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+
 import com.google.common.base.Function;
 
 import configurations.ApplicationConfigurations;
@@ -29,11 +31,11 @@ public class PageBase {
 
 	public PageBase(WebDriver driver)
 	{
-		PageFactory.initElements(driver, this);	
 		this.driver = driver;
+		PageFactory.initElements(driver, this);	
 	}
 
-	public WebElement fluentWait(final By selector , WebDriver driver)
+	public WebElement fluentWait(final By selector)
 	{
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(ApplicationConfigurations.driverDefaultFluentWait))
@@ -61,22 +63,14 @@ public class PageBase {
 		new WebDriverWait(driver, 10)
 				.until((ExpectedCondition<Boolean>) 
 						wd ->((JavascriptExecutor) wd)
-						.executeScript("return !!window.jQuery && window.jQuery.active")
-								   .equals("0"));
+						.executeScript("return !!window.jQuery && window.jQuery.active == 0")
+								   .equals(true));
 	}
-	
-	public void cleanAndSendKeys(WebElement myElement, String keysToSend)
-	{
-		myElement.clear();
-		myElement.sendKeys(keysToSend);
-		
+	public void clickElement(final By selector) {
+		WebElement element = driver.findElement(selector);
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();", element);
 	}
-	
-	public String getElementValue(WebElement element)
-	{
-		return element.getAttribute("Value");
-	}
-	
 	public String getCurrentPageTitle()
 	{
 		return driver.getCurrentUrl();

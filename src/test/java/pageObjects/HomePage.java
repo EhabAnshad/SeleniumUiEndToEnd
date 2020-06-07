@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import models.User;
 
-public class HomePage extends PageBase {
+public class HomePage extends NavigationLinks {
 
 	@FindBy (linkText="Sign up today")
 	private WebElement signUpButton;
@@ -33,31 +33,35 @@ public class HomePage extends PageBase {
 		super(driver);
 	}
 	
-	public HomePage SignUp(User user) {
+	public HomePage signUp(User user) {
 		signUpButton.click();
 		waitForJQuery();
+		userName.clear();
 		userName.sendKeys(user.getUsername());
-		email.sendKeys(user.getEmail());
+		int tries = 3;
+		while (!email.getText().equalsIgnoreCase(user.getEmail()) && tries > 0) {
+			email.clear();
+			email.sendKeys(user.getEmail());
+			tries--;
+		}
 		signup.click();
 		return this;
 	}
 	
-	public String GetResults() {
-		boolean isError= errorText.getAttribute("style").equalsIgnoreCase("display:none");
+	public String getResults() {
 		
-		if(isError)
+		if(errorText.isDisplayed())
 		{
 			return errorText.getText() ;
 		}
 		
-		boolean isDuplicate= duplicateText.getAttribute("style").equalsIgnoreCase("display:none");
-		
-		if(isDuplicate)
+		if(duplicateText.isDisplayed())
 		{
 			return duplicateText.getText() ;
 		}
 		
 		return successText.getText() ;
 	}
+
 
 }

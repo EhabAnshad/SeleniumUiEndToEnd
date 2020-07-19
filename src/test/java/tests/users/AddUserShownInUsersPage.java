@@ -22,6 +22,7 @@ public class AddUserShownInUsersPage extends TestBase {
     			result);
     	
     	UsersPage userPage =  homePageObject.openUsers();
+    	userPage.refreshPage();
     	Assert.assertTrue(userPage.doesUserExists(testUser), testUser.getEmail() + " doesn't exists");
     	
     	//clean up

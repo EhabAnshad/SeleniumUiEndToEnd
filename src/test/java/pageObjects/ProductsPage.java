@@ -67,6 +67,20 @@ public class ProductsPage extends NavigationLinks {
 		return this;
 	}
 	
+	public ProductsPage addExistingNewProduct(Product product) {
+		clickElement(By.id("addNewProduct"));
+		waitForJQuery();
+		waitForElementToBeVisible(By.id("product"));
+		productName.clear();
+		productName.sendKeys(product.getProductName());
+		productPrice.clear();
+		productPrice.sendKeys(product.getPrice());
+		waitForJQuery();
+		addProductButton.click();
+		return this;
+	}
+	
+	
 	public boolean doesProductExists(Product product) {
 		return productNames.stream()
 		.filter(s-> s.getText().equalsIgnoreCase(product.getProductName()))
@@ -74,9 +88,11 @@ public class ProductsPage extends NavigationLinks {
 	}
 
 	public ProductsPage editProduct(Product oldProduct, Product updatedProduct) {
-		WebElement editButton = driver.findElement(By.cssSelector("a[data-id='" + oldProduct.getProductName() + "']"));
+		By selector = By.cssSelector("a[data-id='" + oldProduct.getProductName() + "']");
+		WebElement editButton = driver.findElement(selector);
 		editButton.click();
 		waitForJQuery();
+		waitForElementToBeVisible(By.id("priceToUpdate"));
 		productPriceToUpdate.clear();
 		productPriceToUpdate.sendKeys(updatedProduct.getPrice());
 		updateButton.click();
@@ -89,7 +105,8 @@ public class ProductsPage extends NavigationLinks {
 	}
 		
 	public ProductsPage deleteProduct(Product testProduct) {
-		clickElement(By.name(testProduct.getProductName() + "_delete"));
+		By selector = By.name(testProduct.getProductName() + "_delete");
+		clickElement(selector);
 		waitForElementToBeVisible(By.id("delete"));	
 		deleteButton.click();
 		return this;

@@ -19,7 +19,10 @@ public class AddExistingProduct extends TestBase {
     	
     	ProductsPage productsPage =  homePageObject.openProducts();
     	    	
-    	String result =  productsPage.addNewProduct(testProduct).addNewProduct(testProduct).getResults();
+    	String result =  productsPage
+    			.addNewProduct(testProduct)
+    			.addExistingNewProduct(testProduct)
+    			.getResults();
     	Assert.assertTrue(result
     			.equalsIgnoreCase("Duplicate product found, no action been taken"),
     			result);

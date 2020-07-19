@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,8 +35,11 @@ public class HomePage extends NavigationLinks {
 	}
 	
 	public HomePage signUp(User user) {
-		signUpButton.click();
+		waitForPageToLoad();
 		waitForJQuery();
+		signUpButton.click();
+		waitForElementToBeVisible(By.linkText("Sign up today"));
+		threadSleepWaitIsBad(200);
 		userName.clear();
 		userName.sendKeys(user.getUsername());
 		int tries = 3;

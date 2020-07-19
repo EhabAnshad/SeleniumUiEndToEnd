@@ -50,9 +50,16 @@ public class PageBase {
 	
 	public void waitForElementToBeVisible(final By selector)
 	{
-		WebDriverWait wait = new WebDriverWait(driver, 5);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(
 		        ExpectedConditions.visibilityOfElementLocated(selector));
+	}
+	
+	public void waitForElementToBeInvisible(final By selector)
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(
+		        ExpectedConditions.invisibilityOfElementLocated(selector));
 	}
 	
 	public void waitForPageToLoad()
@@ -78,6 +85,9 @@ public class PageBase {
 		executor.executeScript("arguments[0].click();", element);
 	}
 	
+	public void threadSleepWaitIsBad(int wait) {
+		try {Thread.sleep(wait);} catch (InterruptedException e) {}
+	}
 	
 	public String getCurrentPageTitle()
 	{

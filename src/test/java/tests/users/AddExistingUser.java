@@ -13,16 +13,19 @@ public class AddExistingUser extends TestBase {
     @Test 
     public void AddExistingUserTest() {
     	//setup
+
     	User testUser = new GenerateUser();
     	HomePage homePageObject = new HomePage(driver);
     	
-    	String result =  homePageObject.signUp(testUser).signUp(testUser).getResults();
+    	 homePageObject.signUp(testUser).refreshPage();
+    	 String result =  new HomePage(driver).signUp(testUser).getResults();
     	
     	Assert.assertTrue(result
     			.equalsIgnoreCase("Email already exists, please try again later."),
     			result);
     	
     	//clean up
+    	homePageObject.refreshPage();
     	homePageObject.openUsers().deleteUser(testUser);
     }
 }

@@ -23,6 +23,7 @@ public class AddUserSuccessfully extends TestBase {
     			result);
     	
     	//clean up
+    	homePageObject.refreshPage();
     	homePageObject.openUsers().deleteUser(testUser);
     }
 }

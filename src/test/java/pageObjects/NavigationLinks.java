@@ -18,6 +18,8 @@ public class NavigationLinks extends PageBase {
 	}
 
 	public UsersPage openUsers() {
+		waitForPageToLoad();
+		waitForJQuery();
 		usersPage.click();
 		waitForPageToLoad();
 		waitForJQuery();
@@ -25,6 +27,8 @@ public class NavigationLinks extends PageBase {
 	}
 	
 	public ProductsPage openProducts() {
+		waitForPageToLoad();
+		waitForJQuery();
 		productPage.click();
 		return new ProductsPage(driver);
 	}

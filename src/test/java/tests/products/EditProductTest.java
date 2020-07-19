@@ -24,11 +24,11 @@ public class EditProductTest extends TestBase {
     			.equalsIgnoreCase("Product added successfully, refresh the page to load new data."),
     			result);
     	
-    	productsPage.openProducts();
+    	productsPage.refreshPage();
     	Product updatedProduct = new GenerateProduct();
     	updatedProduct.setProductName(testProduct.getProductName());
-
-    	String updatedProductName = productsPage.editProduct(testProduct, updatedProduct).getProductPrice(updatedProduct);
+    	productsPage.editProduct(testProduct, updatedProduct).refreshPage();
+    	String updatedProductName = new ProductsPage(driver).getProductPrice(updatedProduct);
     	Assert.assertEquals(updatedProductName,  updatedProduct.getPrice());
     	
     	//clean up 

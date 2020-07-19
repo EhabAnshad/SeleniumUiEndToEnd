@@ -21,9 +21,11 @@ public class DeleteUserTest extends TestBase {
     			.equalsIgnoreCase("Thanks for signing up! You'll be among the first to know when we launch."),
     			result);
     	
+    	homePageObject.refreshPage();
     	UsersPage userPage =  homePageObject.openUsers();
+    	userPage.deleteUser(testUser).refreshPage();
     	
-    	boolean userExists = userPage.deleteUser(testUser).doesUserExists(testUser);
+    	boolean userExists = new UsersPage(driver).doesUserExists(testUser);
     	Assert.assertFalse(userExists, "User is not deleted" + testUser.getEmail());
     	
     	

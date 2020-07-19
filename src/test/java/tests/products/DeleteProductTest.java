@@ -24,9 +24,9 @@ public class DeleteProductTest extends TestBase {
     			.equalsIgnoreCase("Product added successfully, refresh the page to load new data."),
     			result);
     	//force refresh as page doesn't automatically load new added products
-    	productsPage.openProducts();
-    	
-    	boolean productExists = productsPage.deleteProduct(testProduct).doesProductExists(testProduct);
+    	productsPage.refreshPage();
+    	productsPage.deleteProduct(testProduct);
+    	boolean productExists = new ProductsPage(driver).doesProductExists(testProduct);
     	Assert.assertFalse(productExists, "User is not deleted" + testProduct.getProductName());
     	
     	

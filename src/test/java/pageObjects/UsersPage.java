@@ -43,6 +43,8 @@ public class UsersPage extends NavigationLinks {
 		userName.clear();
 		userName.sendKeys(updatedUser.getUsername());
 		updateButton.click();
+		waitForJQuery();
+		waitForPageToLoad();
 		return this;
 	}
 

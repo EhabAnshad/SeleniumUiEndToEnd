@@ -21,11 +21,13 @@ public class EditUserTest extends TestBase {
     			.equalsIgnoreCase("Thanks for signing up! You'll be among the first to know when we launch."),
     			result);
     	
+    	homePageObject.refreshPage();
     	UsersPage userPage =  homePageObject.openUsers();
     	User updateTestUser = new GenerateUser();
     	updateTestUser.setEmail(testUser.getEmail());
 
-    	String updatedUserName = userPage.editUser(testUser, updateTestUser).getUserName(updateTestUser);
+    	userPage.editUser(testUser, updateTestUser).refreshPage();
+    	String updatedUserName =  new UsersPage(driver).getUserName(updateTestUser);
     	Assert.assertEquals(updatedUserName,  updateTestUser.getUsername());
     	
     	userPage.deleteUser(testUser);

@@ -71,6 +71,7 @@ public class ProductsPage extends NavigationLinks {
 		clickElement(By.id("addNewProduct"));
 		waitForJQuery();
 		waitForElementToBeVisible(By.id("product"));
+		waitForJQuery();
 		productName.clear();
 		productName.sendKeys(product.getProductName());
 		productPrice.clear();

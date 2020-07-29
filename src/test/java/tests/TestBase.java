@@ -43,7 +43,19 @@ public class TestBase
 		else if (WindowBrowser.equalsIgnoreCase("chrome")) 
 		{
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--test-type");
+			options.addArguments("--headless", 
+					"--window-size=1280x1696",
+					"--no-sandbox",
+					"--user-data-dir=/tmp/user-data",
+					"--hide-scrollbars",
+					"--enable-logging",
+					"--log-level=0", 
+					"--v=99", 
+					"--single-process",
+					"--data-path=/tmp/data-path", 
+					"--ignore-certificate-error",
+					"--homedir=/tmp",
+					"--disk-cache-dir=/tmp/cache-dir");
 			driver = new ChromeDriver(options);
 		}
 		else if (WindowBrowser.equalsIgnoreCase("ie")) 

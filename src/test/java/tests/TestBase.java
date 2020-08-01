@@ -59,7 +59,7 @@ public class TestBase
 					"--ignore-certificate-error",
 					"--homedir=/tmp",
 					"--disk-cache-dir=/tmp/cache-dir");
-			driver = new ChromeDriver(options);
+			driver = new ChromeDriver();
 		}
 		else if (WindowBrowser.equalsIgnoreCase("ie")) 
 		{

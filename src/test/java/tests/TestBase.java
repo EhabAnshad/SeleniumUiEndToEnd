@@ -18,6 +18,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import configurations.ApplicationConfigurations;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import utilities.CaptureScreenShotHandler;
 
 
@@ -37,11 +38,13 @@ public class TestBase
 	@Parameters({ "browser" })
 	public void getDriverForTest(@Optional("chrome") String WindowBrowser)
 	{
+		
 		if (WindowBrowser.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
 		}
 		else if (WindowBrowser.equalsIgnoreCase("chrome")) 
 		{
+			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless", 
 					"--window-size=1280x1696",

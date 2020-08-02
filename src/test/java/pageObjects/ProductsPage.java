@@ -46,6 +46,8 @@ public class ProductsPage extends NavigationLinks {
 	
 	public ProductsPage(WebDriver driver) {
 		super(driver);
+		waitForPageToLoad();
+		waitForJQuery();
 	}
 	
 	public ProductsPage addNewProduct(Product product) {

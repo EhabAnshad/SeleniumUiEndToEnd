@@ -73,7 +73,7 @@ public class PageBase {
 
 	public void waitForJQuery() 
 	{
-		new WebDriverWait(driver, 20)
+		new WebDriverWait(driver, 45)
 				.until((ExpectedCondition<Boolean>) 
 						wd ->((JavascriptExecutor) wd)
 						.executeScript("return !!window.jQuery && window.jQuery.active == 0")
@@ -96,5 +96,7 @@ public class PageBase {
 
 	public void refreshPage() {
 		driver.navigate().refresh();
+		waitForPageToLoad();
+		waitForJQuery();
 	}
 }

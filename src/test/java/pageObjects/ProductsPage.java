@@ -66,6 +66,7 @@ public class ProductsPage extends NavigationLinks {
 		productPrice.sendKeys(product.getPrice());
 		waitForJQuery();
 		addProductButton.click();
+		waitForJQuery();
 		return this;
 	}
 	
@@ -80,6 +81,7 @@ public class ProductsPage extends NavigationLinks {
 		productPrice.sendKeys(product.getPrice());
 		waitForJQuery();
 		addProductButton.click();
+		waitForJQuery();
 		return this;
 	}
 	

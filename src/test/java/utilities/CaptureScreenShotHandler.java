@@ -19,7 +19,7 @@ import org.testng.Reporter;
 public class CaptureScreenShotHandler {
 	public static void captureScreenshot(WebDriver driver, String screenshotname) {
 		try {
-			Path dest = Paths.get(".", "test-output", "ScreenShots", LocalDateTime.now() + "-" + screenshotname + ".png");
+			Path dest = Paths.get(".", "test-output", "ScreenShots", LocalDateTime.now().toString().replace(":","-") + "-" + screenshotname + ".png");
 			Files.createDirectories(dest.getParent());
 			FileOutputStream out = new FileOutputStream(dest.toString());
 			out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));

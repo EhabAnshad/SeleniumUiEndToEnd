@@ -1,14 +1,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="demo" parallel="classes" thread-count="12">
-	<parameter name="URL" value="http://127.0.0.1:3000/" />
+<suite name="demo" parallel="classes" thread-count="36">
+	<parameter name="URL" value="" />
+	<parameter name="browser" value="chrome" />
 	<test name="chrome">
-		<parameter name="browser" value="chrome" />
+
 		<classes>
-			<class name="tests.users.AddExistingUser" />
+	 		<class name="tests.users.AddExistingUser" />
 			<class name="tests.users.AddUserShownInUsersPage" />
 			<class name="tests.users.AddUserSuccessfully" />
 			<class name="tests.users.AddUserValidation" />
-			<class name="tests.users.DeleteUserTest" />
+		    <class name="tests.users.DeleteUserTest" />
 			<class name="tests.users.EditUserTest" />
 			
 			<class name="tests.products.AddExistingProduct" />
@@ -16,7 +17,46 @@
 			<class name="tests.products.AddProductSuccessfully" />
 			<class name="tests.products.AddProductValidation" />
 			<class name="tests.products.DeleteProductTest" />
-			<class name="tests.products.EditProductTest" /> 
+			<class name="tests.products.EditProductTest" />  
+			
+		</classes>
+	</test>
+		<test name="chrome1">
+
+		<classes>
+	 		<class name="tests.users.AddExistingUser" />
+			<class name="tests.users.AddUserShownInUsersPage" />
+			<class name="tests.users.AddUserSuccessfully" />
+			<class name="tests.users.AddUserValidation" />
+		    <class name="tests.users.DeleteUserTest" />
+			<class name="tests.users.EditUserTest" />
+			
+			<class name="tests.products.AddExistingProduct" />
+			<class name="tests.products.AddProductShownInProductPage" />
+			<class name="tests.products.AddProductSuccessfully" />
+			<class name="tests.products.AddProductValidation" />
+			<class name="tests.products.DeleteProductTest" />
+			<class name="tests.products.EditProductTest" />  
+			
+		</classes>
+	</test>
+	<test name="chrome2">
+
+		<classes>
+	 		<class name="tests.users.AddExistingUser" />
+			<class name="tests.users.AddUserShownInUsersPage" />
+			<class name="tests.users.AddUserSuccessfully" />
+			<class name="tests.users.AddUserValidation" />
+		    <class name="tests.users.DeleteUserTest" />
+			<class name="tests.users.EditUserTest" />
+			
+			<class name="tests.products.AddExistingProduct" />
+			<class name="tests.products.AddProductShownInProductPage" />
+			<class name="tests.products.AddProductSuccessfully" />
+			<class name="tests.products.AddProductValidation" />
+			<class name="tests.products.DeleteProductTest" />
+			<class name="tests.products.EditProductTest" />  
+			
 		</classes>
 	</test>
 </suite>

@@ -1,9 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="demo" parallel="classes" thread-count="36">
+<suite name="demo" parallel="classes" thread-count="1">
+    <listeners>
+        <listener class-name="AnnotationMutater"/>
+    </listeners>
 	<parameter name="URL" value="" />
 	<parameter name="browser" value="chrome" />
 	<test name="chrome">
-
 		<classes>
 	 		<class name="tests.users.AddExistingUser" />
 			<class name="tests.users.AddUserShownInUsersPage" />
@@ -22,7 +24,6 @@
 		</classes>
 	</test>
 		<test name="chrome1">
-
 		<classes>
 	 		<class name="tests.users.AddExistingUser" />
 			<class name="tests.users.AddUserShownInUsersPage" />
@@ -41,7 +42,6 @@
 		</classes>
 	</test>
 	<test name="chrome2">
-
 		<classes>
 	 		<class name="tests.users.AddExistingUser" />
 			<class name="tests.users.AddUserShownInUsersPage" />

@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="demo" parallel="classes" thread-count="1">
     <listeners>
-        <listener class-name="AnnotationMutater"/>
+        <listener class-name="utilities.AnnotationMutater"/>
     </listeners>
 	<parameter name="URL" value="" />
 	<parameter name="browser" value="chrome" />

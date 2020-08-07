@@ -37,8 +37,8 @@ public class HomePage extends NavigationLinks {
 	public HomePage signUp(User user) {
 		waitForPageToLoad();
 		waitForJQuery();
-		signUpButton.click();
 		waitForElementToBeVisible(By.linkText("Sign up today"));
+		signUpButton.click();
 		threadSleepWaitIsBad(200);
 		userName.clear();
 		userName.sendKeys(user.getUsername());
